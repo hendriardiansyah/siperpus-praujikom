@@ -23,6 +23,11 @@ class koneksi{
 		return $hasil;
 	}
 
+	function tambah_data_anggota($nik, $nama, $alamat, $jk, $t_lahir, $tgl_lahir)
+	{
+		mysqli_query($this->konek, "insert into tbl_anggota values('$nik', '$nama', '$alamat', '$jk', '$t_lahir', '$tgl_lahir')");
+	}
+
 }
 
 $konek = new koneksi();
