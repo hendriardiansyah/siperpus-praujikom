@@ -23,5 +23,10 @@
             $_POST['t_lahir'],
             $_POST['tgl_lahir']);
         header('location:../pages/anggota_list.php');
+    }elseif($action == "delete")
+    {
+        $nik = $_GET['nik'];
+        $konek->delete_data_anggota($nik);
+        header('location:../pages/anggota_list.php');
     }
 ?>

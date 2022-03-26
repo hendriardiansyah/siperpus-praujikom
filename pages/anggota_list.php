@@ -36,7 +36,7 @@
 		<td><?php echo $row['tgl_lahir']; ?></td>
 		<td>
 			<a href="anggota_edit.php?nik=<?php echo $row['nik']; ?>&aksi=edit">Edit</a>
-			<a href="../anggota_proses.php?nik=<?php echo $row['nik']; ?>&action=delete">Hapus</a>
+			<a href="../proses/anggota_proses.php?nik=<?php echo $row['nik']; ?>&action=delete">Hapus</a>
 		</td>
 	</tr>
 	<?php 

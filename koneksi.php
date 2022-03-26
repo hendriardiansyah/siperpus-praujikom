@@ -39,6 +39,11 @@ class koneksi{
 		$query = mysqli_query($this->konek,"update tbl_anggota set nik='$nik', nama='$nama',alamat='$alamat',jk='$jk', t_lahir = '$t_lahir', tgl_lahir = '$tgl_lahir' where nik='$nik'");
 	}
 
+	function delete_data_anggota($nik)
+	{
+		$query = mysqli_query($this->konek,"delete from tbl_anggota where nik='$nik'");
+	}
+
 }
 
 $konek = new koneksi();
