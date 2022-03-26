@@ -1,17 +1,22 @@
 <?php 
-	include "koneksi.php";
+	include "../koneksi.php";
 	$db = new koneksi();
  ?>
  <h1>CRUD OOP PHP</h1>
- <h3>Tambah Data Bayar</h3>
-
- <a href="input_bayar.php">Input Data</a>
+ <h2>Tambah Data Anggota</h2>
+ <hr>
+ <table>
+        <tr>
+            <td> <a href="anggota_add.php"> <button> + Tambah Data Anggota</button> </a> </td>
+        </tr>
+    </table>
+    <br>
 <table border="1">
 	<tr>
 		<th>No</th>
 		<th>NIK</th>
-		<th>Nama Anggota</th>
-		<th>Alamat</th>
+		<th>Nama </th>
+		<th>Alamat </th>
         <th>Jenis Kelamin</th>
         <th>Tempat Lahir</th>
         <th>Tanggal Lahir</th>
@@ -24,11 +29,11 @@
 	<tr>
 		<td><?php echo $no++; ?></td>
 		<td><?php echo $row['nik']; ?></td>
-		<td><?php echo $row['nm_bank_pengirim']; ?></td>
-		<td><?php echo $row['nm_pengirim']; ?></td>
-        <td><?php echo $row['norek_pengirim']; ?></td>
-		<td><?php echo $row['file']; ?></td>
-		<td><?php echo $row['tanggal_upload']; ?></td>
+		<td><?php echo $row['nama']; ?></td>
+		<td><?php echo $row['alamat']; ?></td>
+        <td><?php echo $row['jk']; ?></td>
+		<td><?php echo $row['t_lahir']; ?></td>
+		<td><?php echo $row['tgl_lahir']; ?></td>
 		<td>
 			<a href="edit_anggota.php?nik=<?php echo $row['nik']; ?>&aksi=edit">Edit</a>
 			<a href="proses_anggota.php?nik=<?php echo $row['nik']; ?>&action=delete">Hapus</a>
