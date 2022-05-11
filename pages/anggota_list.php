@@ -1,6 +1,7 @@
 <?php 
 	include "../koneksi.php";
 	$db = new koneksi();
+	$conn = $db->konek;
  ?>
  <h1>CRUD OOP PHP</h1>
  <h2>Tambah Data Anggota</h2>
@@ -23,7 +24,16 @@
 		<th>Opsi</th>
 	</tr>
 	<?php
-	$no = 1;
+	$halaman = 10;
+	$page = isset($_GET['halaman']) ? (int)$_GET["halaman"]:1;
+	$mulai = ($page>1) ? ($page * $halaman) - $halaman : 0;
+	$result = mysqli_query($conn, "select * from tbl_anggota");
+	$total = mysqli_num_rows($result);
+	$pages = ceil($total/$halaman);
+	$query = mysqli_query($conn, "select * from tbl_anggota LIMIT $mulai, $halaman")or die(mysqli_error);
+  	$no =$mulai+1;
+
+	// $no = 1;
 	foreach($db->tampil_data_anggota() as $row){
 	?>
 	<tr>
@@ -43,3 +53,7 @@
 	}
 	?>
 </table>
+<?php for ($i=1; $i<=$pages ; $i++){ ?>
+  <a href="?halaman=<?php echo $i; ?>"><?php echo $i; ?></a>
+ 
+  <?php } ?>

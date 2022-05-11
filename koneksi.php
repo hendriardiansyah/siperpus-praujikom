@@ -14,9 +14,21 @@ class koneksi{
 		}
 	}
 
-	function tampil_data_anggota()
+	//Anggota
+	public function tampil_data_anggota()
 	{
-		$data = mysqli_query($this->konek,"select * from tbl_anggota");
+		$batas = 10;
+		$halaman = isset($_GET['halaman'])?(int)$_GET['halaman'] : 1;
+		$halaman_awal = ($halaman > 1) ? ($halaman * $batas) - $batas : 0;
+
+		$previous = $halaman - 1;
+		$next = $halaman + 1;
+
+		$dt = mysqli_query($this->konek, "select * from tbl_anggota");
+		$jumlah_data = mysqli_num_rows($dt);
+		$total_halaman = ceil($jumlah_data / $batas);
+
+		$data = mysqli_query($this->konek,"select * from tbl_anggota limit $halaman_awal, $batas");
 		while($row = mysqli_fetch_array($data)){
 			$hasil[] = $row;
 		}
@@ -44,8 +56,8 @@ class koneksi{
 		$query = mysqli_query($this->konek,"delete from tbl_anggota where nik='$nik'");
 	}
 
+	//Buku
 }
 
 $konek = new koneksi();
-
 ?>
